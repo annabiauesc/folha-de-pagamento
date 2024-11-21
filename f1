@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main () {
+
+int salario_base;
+int salario_min = 1412.00;
+int grau_acad;
+int temp_serv;
+float salario_bruto;
+float bonus_ano;
+
+  printf("Digite o salário base: ");
+  scanf("%d", &salario_base);
+
+  if (salario_base < salario_min) {
+  printf("O valor é inválido");
+
+  return 1;
+}
+
+
+
+ int doutor = 1;
+ int mestre = 2;
+ int especialista = 3;
+ int nenhum = 4;
+
+printf("Digite o grau acadêmico (1 para doutor, 2 para mestre, 3 para especialista e 4 para nenhum): ");
+scanf("%d", &grau_acad);
+
+printf("Digite o tempo de serviço: ");
+scanf("%d", &temp_serv);
+
+if (temp_serv >= 5) {
+    bonus_ano = temp_serv * (salario_base * 0.01);
+} else {
+    bonus_ano = 0;
+}
+
+
+if (grau_acad == 1) {
+  salario_bruto = salario_base + (salario_base * 0.6) + bonus_ano + 440;
+}
+else if (grau_acad == 2) {
+  salario_bruto = salario_base + (salario_base * 0.4) + bonus_ano + 440;
+}
+else if (grau_acad == 3) {
+  salario_bruto = salario_base + (salario_base * 0.2) + bonus_ano + 440;
+}
+else if (grau_acad == 4) {
+  salario_bruto = salario_base + bonus_ano + 440;
+}
+
+printf("O salário bruto é: %.2f\n", salario_bruto);
+
+float irpf;
+float inss;
+
+  if (salario_bruto <= 2112.00) {
+  irpf = 0;
+} else if (salario_bruto <= 2826.66) {
+  irpf = (salario_bruto * 0.075);
+} else if (salario_bruto <= 3751.06) {
+    irpf = (salario_bruto * 0.15);
+} else if (salario_bruto <= 4664.68) {
+    irpf = (salario_bruto * 0.225);
+} else if (salario_bruto > 4664.68) {
+    irpf = (salario_bruto * 0.275);
+}
+  if (salario_bruto <= 1412.00) {
+    inss = 0;
+  } else if (salario_bruto <= 2666.68) {
+    inss = (salario_bruto * 0.075);
+  } else if (salario_bruto <= 4000.03) {
+    inss = (salario_bruto * 0.12);
+  } else if (salario_bruto <= 7786.02) {
+    inss = (salario_bruto * 0.14);
+  } else {
+    inss = (salario_bruto * 0.14);
+  }
+  
+  
+ printf("O salario líquido é: %.2f", salario_bruto - (irpf + inss));
+  
+  
+
+
+  
+
+
+return 0;
+}
